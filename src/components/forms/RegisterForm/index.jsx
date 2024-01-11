@@ -28,7 +28,7 @@ export const RegisterForm = () => {
     const userRegister = async (payload) => {
         try {
             const { data } = await api.post("/users", payload);
-            navigate("/dashboard");
+            navigate("/");
             console.log(data);
         } catch (error) {
             console.error("Error during registration:", error.response.data);

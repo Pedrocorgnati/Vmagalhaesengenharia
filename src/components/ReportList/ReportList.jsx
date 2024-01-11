@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { reportsService } from '../../services/ReportsService';
 import "./ReportList.scss";
+import downloadIcon from "../../Assets/Icons/download.svg";
 
 export const ReportList = () => {
     const [selectedOption, setSelectedOption] = useState('');
@@ -54,7 +55,7 @@ export const ReportList = () => {
                         <p>Data: {report.date}</p>
                         <p>Tipo: {report.type}</p>
                         <button onClick={() => handleDownloadClick(report.Link)}>
-                            <img src="src/Assets/Icons/download.svg" alt="Download" />
+                            <img src={downloadIcon} alt="Download" />
                         </button>
                     </li>
                 ))}

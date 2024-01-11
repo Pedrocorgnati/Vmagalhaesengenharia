@@ -1,7 +1,7 @@
 import { ButtonLogout, ButtonReturn } from '../Buttons/Buttons'
 import './Header.scss'
 import { Link } from 'react-router-dom'
-
+import Logo from "../../Assets/Logo/Logo-png.png";
 
 const HeaderLogin = () => {
 
@@ -10,7 +10,7 @@ const HeaderLogin = () => {
     <>
       <header className='header-login'>
         <div className="logo-and-name">
-          <img src="src\Assets\Logo\Logo-png.png" className="logo" alt="Logo" />
+          <img src={Logo} className="logo" alt="Logo" />
           <h1 className="text-logo"><span>V</span>magalhães</h1>
         </div>
         <nav className="homePage-Nav">
