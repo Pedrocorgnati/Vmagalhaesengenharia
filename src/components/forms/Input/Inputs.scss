@@ -1,0 +1,20 @@
+@import "../../../App.scss";
+
+.div-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+input,
+select {
+    background: $white;
+    width: 264px;
+    height: 38px;
+    border: 1px solid $grey2;
+    border-radius: 3.2px;
+    margin-bottom: 10px;
+    color: $grey1;
+}

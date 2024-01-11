@@ -1,0 +1,20 @@
+@import "../../utils/Mixins/Mixins.scss";
+
+
+.main-content {
+    @include center-column;
+
+}
+
+.homePage-Nav {
+    @include between-row;
+    gap: 10px;
+
+
+}
+
+.whatWeDo,
+.aboutUs {
+    width: 80%;
+    margin-bottom: 50px;
+}

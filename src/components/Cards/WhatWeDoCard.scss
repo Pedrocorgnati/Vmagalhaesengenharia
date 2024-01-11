@@ -1,0 +1,29 @@
+@import "../../utils/Mixins/Mixins.scss";
+
+.what-we-do-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+}
+
+.what-we-do-card {
+    width: 250px;
+    border: 1px solid #ccc;
+    padding: 20px;
+    @include center-column;
+}
+
+.card-image {
+    width: 250px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    margin-top: 10px;
+}
+
+.card-description {
+    margin-top: 10px;
+}

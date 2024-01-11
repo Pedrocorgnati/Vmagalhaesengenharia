@@ -1,0 +1,95 @@
+@import "../../App.scss";
+
+button {
+    color: $white;
+}
+
+.button-login,
+.button-sign-up,
+.button-submit {
+    height: 38px;
+    padding: 2px 35px;
+    border-radius: 10px;
+    border: none;
+    align-self: center;
+    text-decoration: none;
+    display: flex;
+    color: $white;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 22px;
+    font-weight: 600;
+}
+
+.button-submit {
+    background: $darkblue;
+}
+
+.button-submit:hover {
+    background: $white;
+    color: $darkblue;
+    border: 2px solid $darkblue;
+    transition: 0.5s;
+
+}
+
+.button-login {
+    background: $blue;
+
+}
+
+.button-login:hover {
+    background: white;
+    color: $blue;
+    border: 2px solid $blue;
+    transition: 0.5s;
+
+}
+
+.button-sign-up {
+    background: $grey1;
+}
+
+.button-sign-up:hover {
+    background: white;
+    color: $blue;
+    border: 2px solid $blue;
+    transition: 0.5s;
+
+}
+
+.Link-return,
+.button-logout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    background: $grey3;
+    color: $white;
+    height: 32px;
+    border-radius: 10px;
+    border: none;
+    font-size: 9px;
+    font-weight: 600;
+    line-height: 22px;
+    width: 79px;
+
+}
+
+.Link-return:hover,
+.button-logout:hover {
+    background: $white;
+    color: $grey3;
+    border: 1px solid $grey3;
+    transition: 0.5s;
+
+}
+
+label {
+    color: $white;
+    font-size: 9px;
+    font-weight: 400;
+    align-self: flex-start;
+}

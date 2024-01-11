@@ -1,0 +1,22 @@
+@import "../../utils/Mixins/Mixins.scss";
+@import "../../App.scss";
+
+footer {
+    @include center-column;
+    background: $lightblue;
+    width: 100%;
+}
+
+.footerAdress {
+    color: $white;
+
+    p {
+        color: $white;
+    }
+}
+
+.copyright {
+    p {
+        color: $white;
+    }
+}

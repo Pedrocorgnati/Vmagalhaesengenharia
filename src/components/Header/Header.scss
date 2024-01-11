@@ -1,0 +1,55 @@
+@import "../../App.scss";
+@import "../../utils/Mixins/Mixins.scss";
+@import "../Buttons/Buttons.scss";
+
+.logo {
+    width: 50px;
+}
+
+header {
+    padding: 20px;
+}
+
+.text-logo {
+    color: $grey4;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 28px;
+
+    span {
+        color: $blue;
+    }
+}
+
+.header-login {
+    @include between-row;
+    gap: 60vw;
+}
+
+.logo-and-name {
+    height: 50px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.header-register,
+.header-dashboard {
+    height: 50px;
+    @include between-row;
+}
+
+.Link-login {
+    text-decoration: none;
+    font-weight: 600;
+    color: $darkblue;
+    padding: 2px 4px;
+    font-size: 16px;
+}
+
+.Link-login:hover {
+    color: $blue;
+    padding: 0px 0px;
+    font-size: 18px;
+    transition: 0.3s;
+}

@@ -1,0 +1,5 @@
+@import "../../utils/Mixins/Mixins.scss";
+
+.reportCard {
+    @include between-row;
+}
