@@ -4,7 +4,11 @@ import { Link } from 'react-router-dom'
 import Logo from "../../Assets/Logo/Logo-png.png";
 
 const HeaderLogin = () => {
-
+  const handleLogout = async (e) => {
+    e.preventDefault();
+    setUser(null);
+    setError("");
+  }
 
   return (
     <>
@@ -45,5 +49,16 @@ const HeaderDashboard = () => {
     </>
   )
 }
-export { HeaderDashboard, HeaderLogin, HeaderRegister }
+const HeaderAdmin = () => {
+  return (
+    <header className='header-dashboard'>
+      <Link to="/" className="logo-and-name">
+        <img src={Logo} className="logo" alt="Logo" />
+        <h1 className="text-logo"><span>V</span>magalhães</h1>
+      </Link>
+    </header>
+  );
+};
+
+export { HeaderAdmin, HeaderDashboard, HeaderLogin, HeaderRegister }
 

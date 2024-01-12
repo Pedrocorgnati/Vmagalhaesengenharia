@@ -30,5 +30,10 @@ const ButtonLogout = ({ userLogout }) => {
         <Link onClick={userLogout} className="button-logout" to="/">Sair</Link>
     );
 }
-
-export { ButtonLogin, ButtonLogout, ButtonReturn, ButtonSignUp, ButtonSubmit };
+const ButtonAdminDash = () => {
+    return (
+        <>
+            <Link className="button-submit" to="/admin-dashboard">Acessar área do Administrador</Link>        </>
+    )
+}
+export { ButtonAdminDash, ButtonLogin, ButtonLogout, ButtonReturn, ButtonSignUp, ButtonSubmit };

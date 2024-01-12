@@ -1,8 +1,6 @@
 @import "../../App.scss";
 
-button {
-    color: $white;
-}
+
 
 .button-login,
 .button-sign-up,
@@ -60,6 +58,19 @@ button {
 
 }
 
+button {
+    color: $white;
+    border: 1px solid $white;
+    background: none;
+    border-radius: 10px;
+    cursor: pointer;
+
+
+    img {
+        border: none;
+    }
+}
+
 .Link-return,
 .button-logout {
     display: flex;
@@ -88,8 +99,9 @@ button {
 }
 
 label {
-    color: $white;
-    font-size: 9px;
+    color: $darkblue;
+    font-size: 15px;
     font-weight: 400;
     align-self: flex-start;
+    padding-right: 10px;
 }

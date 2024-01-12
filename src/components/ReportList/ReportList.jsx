@@ -3,7 +3,7 @@ import { reportsService } from '../../services/ReportsService';
 import "./ReportList.scss";
 import downloadIcon from "../../Assets/Icons/download.svg";
 
-export const ReportList = () => {
+export const ReportList = ({ userEmail }) => {
     const [selectedOption, setSelectedOption] = useState('');
     const [reports, setReports] = useState([]);
     const [filteredReports, setFilteredReports] = useState([]);
@@ -11,13 +11,14 @@ export const ReportList = () => {
     useEffect(() => {
         reportsService.getReportsList()
             .then((data) => {
-                setReports(data);
-                setFilteredReports(data);
+                const userReports = data.filter(report => report.client === userEmail);
+                setReports(userReports);
+                setFilteredReports(userReports);
             })
             .catch((error) => {
                 console.error('Erro ao carregar relatórios:', error);
             });
-    }, []);
+    }, [userEmail]);
 
     const handleSelectChange = (event) => {
         setSelectedOption(event.target.value);
@@ -25,8 +26,12 @@ export const ReportList = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        const filtered = reports.filter((report) => report.type === selectedOption);
-        setFilteredReports(filtered);
+        if (selectedOption) {
+            const filtered = reports.filter((report) => report.type === selectedOption);
+            setFilteredReports(filtered);
+        } else {
+            setFilteredReports(reports);
+        }
     };
 
     const handleDownloadClick = (reportLink) => {

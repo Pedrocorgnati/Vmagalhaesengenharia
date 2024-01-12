@@ -25,15 +25,31 @@ $breakpoints: (
 }
 
 @mixin center-column {
-    display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 
+@mixin start-column {
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+@mixin center-row {
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
 @mixin between-row {
-    display: flex;
     justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+@mixin start-row {
+    justify-content: flex-start;
     align-items: center;
     flex-direction: row;
 }

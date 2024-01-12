@@ -4,12 +4,13 @@ import { WhatWeDoCard } from "../../components/Cards/WhatWeDoCard";
 import { Footer } from "../../components/Footer/Footer";
 import { Nav } from "../../components/Nav/Nav";
 import ImageHomePage from "../../Assets/Construtora1.jpg";
+import { ButtonAdminDash } from "../../components/Buttons/Buttons.jsx";
 export const HomePage = () => {
     return (
         <>
             <HeaderLogin />
             <Nav />
-
+            <ButtonAdminDash />
             <div className="aboutUs">
                 <h1 className="aboutUsTitle">
                     Quem somos nós

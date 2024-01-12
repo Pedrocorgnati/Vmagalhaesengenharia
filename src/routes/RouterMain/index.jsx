@@ -5,6 +5,8 @@ import { HomePage } from '../../pages/HomePage/HomePage';
 import { AboutUs } from '../../pages/PublicPages/AboutUs';
 import { Clients } from '../../pages/PublicPages/Clients';
 import { ContactUs } from '../../pages/PublicPages/ContactUs';
+import { AdmLogin } from "../../pages/Admin/AdmLogin/AdmLogin.jsx";
+import { AdminDashboard } from "../../pages/Admin/Admin.jsx";
 
 export const RouterMain = () => {
     const [user, setUser] = useState(null);
@@ -20,9 +22,9 @@ export const RouterMain = () => {
                 <Route path="/empresa" element={<AboutUs />} />
                 <Route path="/contato" element={<ContactUs />} />
                 <Route path="*" element={<NotFoundPage />} />
+                <Route path="/admin" element={<AdmLogin />} />
+                <Route path="/admin-dashboard" element={<AdminDashboard />} />
             </Routes>
         </div>
     );
 }
-
-export default RouterMain;
