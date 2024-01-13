@@ -1,17 +1,22 @@
 import React, { useState } from 'react';
 import { reportsService } from '../../../services/ReportsService';
-import editIcon from "../../../Assets/Icons/edit.svg";
 import "../Admin.scss";
 
-export const EditReport = ({ reportId, onReportUpdated }) => {
-    const [report, setReport] = useState({ ...reportsService.findReportById(reportId) });
-
+export const EditReport = ({ reportId, onReportUpdated, onClose }) => {
+    const [report, setReport] = useState({
+        ...reportsService.findReportById(reportId),
+        client: "",
+        date: "",
+        title: "",
+        type: "",
+        link: ""
+    });
     const handleSubmit = (e) => {
         e.preventDefault();
         reportsService.updateReport(reportId, report);
         onReportUpdated();
+        onClose();
     };
-
     const handleChange = (e) => {
         setReport({ ...report, [e.target.name]: e.target.value });
     };

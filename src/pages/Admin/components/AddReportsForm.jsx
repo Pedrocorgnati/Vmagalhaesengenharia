@@ -1,16 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { reportsService } from '../../../services/ReportsService';
+import { clientsService } from '../../../services/ClientsService';
 import "../../../components/Buttons/Buttons.scss";
 import "../Admin.scss";
 
 export const AddReportsForm = ({ onReportAdded }) => {
-    const [report, setReport] = useState({ client: '', date: '', title: '', type: '', link: '' });
+    const [report, setReport] = useState({ client: '', date: '', title: '', type: '', Link: '' });
+    const [clients, setClients] = useState([]);
+
+    useEffect(() => {
+        const loadClients = async () => {
+            const clientsData = await clientsService.getClientsList();
+            setClients(clientsData);
+        };
+        loadClients();
+    }, []);
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if (Object.values(report).every(field => field)) {
             reportsService.addReport({ ...report, id: generateUniqueId() });
-            setReport({ client: '', date: '', title: '', type: '', link: '' });
+            setReport({ client: '', date: '', title: '', type: '', Link: '' });
             onReportAdded();
         } else {
             alert('Todos os campos são obrigatórios');
@@ -25,13 +35,16 @@ export const AddReportsForm = ({ onReportAdded }) => {
         <form className='reports-form' onSubmit={handleSubmit}>
             <div className='div-labelInput'>
                 <label>Email do cliente:</label>
-                <input
-                    type="email"
+                <select
                     name="client"
                     value={report.client}
                     onChange={handleChange}
-                    required
-                />
+                    required>
+                    <option value="">Selecione um cliente</option>
+                    {clients.map(client => (
+                        <option key={client.id} value={client.client}>{client.client}</option>
+                    ))}
+                </select>
             </div>
             <div className='div-labelInput'>
                 <label>Data do relatório:</label>
@@ -73,8 +86,8 @@ export const AddReportsForm = ({ onReportAdded }) => {
                 <label>Link do arquivo no Google Drive:</label>
                 <input
                     type="url"
-                    name="link"
-                    value={report.link}
+                    name="Link"
+                    value={report.Link}
                     onChange={handleChange}
                     required
                 />
@@ -87,3 +100,5 @@ export const AddReportsForm = ({ onReportAdded }) => {
 const generateUniqueId = () => {
     return Math.random().toString(36).substr(2, 9);
 };
+
+export default AddReportsForm;
