@@ -83,7 +83,7 @@ export const AddReportsForm = ({ onReportAdded }) => {
                 </select>
             </div>
             <div className='div-labelInput'>
-                <label>Link do arquivo no Google Drive:</label>
+                <label>Link do Google Drive:</label>
                 <input
                     type="url"
                     name="Link"

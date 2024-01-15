@@ -6,11 +6,38 @@
     background: $lightblue;
     padding: 10px 0px;
     border-radius: 10px;
-}
-
-.div-labelInput {
+    width: 400px;
     display: flex;
-    @include start-column;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .div-labelInput {
+        display: flex;
+        @include start-column;
+
+        label {
+            font-size: 20px;
+        }
+    }
+
+    button {
+        color: $white;
+        background: $lightblue;
+        border: 2px solid $white;
+        padding: 10px 30px;
+        font-size: 15px;
+        font-weight: 550;
+        text-decoration: none;
+
+        &:hover {
+            color: $lightblue;
+            background: $white;
+            border: 2px solid $white;
+        }
+    }
+
+
 }
 
 .filter-buttons {
@@ -98,4 +125,28 @@ button {
     float: right;
     font-size: 1.5em;
     cursor: pointer;
+}
+
+.main-admin {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 50px;
+
+    .section-admin {
+        display: flex;
+        @include start-column;
+    }
+}
+
+.simulador-area-cliente {
+    border: 5px solid red;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+h4 {
+    color: red;
+    font-size: 20px;
+    font-weight: 550;
 }

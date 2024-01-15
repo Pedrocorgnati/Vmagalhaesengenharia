@@ -2,6 +2,7 @@
 @import "../../App.scss";
 
 .nav-Home {
+    display: flex;
     @include between-row;
     width: 80%;
     background: $lightblue;

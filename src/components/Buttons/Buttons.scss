@@ -64,6 +64,7 @@ button {
     background: none;
     border-radius: 10px;
     cursor: pointer;
+    text-decoration: none;
 
 
     img {
@@ -104,4 +105,26 @@ label {
     font-weight: 400;
     align-self: flex-start;
     padding-right: 10px;
+}
+
+.button-admin-dashboard {
+    background: red;
+    color: white;
+    border-radius: 10px;
+    width: 150px;
+    text-decoration: none;
+    border: 1px solid red;
+    height: 50px;
+    padding: 10px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    text-wrap: wrap;
+
+    &:hover {
+        background: $white;
+        border: 1px solid red;
+        color: red;
+    }
 }

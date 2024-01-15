@@ -2,6 +2,7 @@
 @import "../../App.scss";
 
 footer {
+    display: flex;
     @include center-column;
     background: $lightblue;
     width: 100%;

@@ -1,5 +1,6 @@
 @import "../../utils/Mixins/Mixins.scss";
 
 .reportCard {
+    display: flex;
     @include between-row;
 }

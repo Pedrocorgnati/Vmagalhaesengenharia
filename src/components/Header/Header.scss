@@ -24,6 +24,7 @@ header {
 }
 
 .header-login {
+    display: flex;
     @include between-row;
     gap: 60vw;
 }
@@ -38,6 +39,7 @@ header {
 .header-register,
 .header-dashboard {
     height: 50px;
+    display: flex;
     @include between-row;
 }
 

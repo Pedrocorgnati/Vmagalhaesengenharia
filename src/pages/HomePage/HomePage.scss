@@ -2,11 +2,14 @@
 
 
 .main-content {
+    display: flex;
     @include center-column;
 
 }
 
 .homePage-Nav {
+    display: flex;
+
     @include between-row;
     gap: 10px;
 
