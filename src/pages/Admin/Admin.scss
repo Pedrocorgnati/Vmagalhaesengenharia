@@ -145,6 +145,11 @@ button {
     padding: 20px;
 }
 
+.relatorio-renderizado-cliente {
+    display: flex;
+    @include start-row;
+}
+
 h4 {
     color: red;
     font-size: 20px;
