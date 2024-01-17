@@ -1,4 +1,4 @@
-import { HeaderRegister } from "../../components/Header/Header";
+import { HeaderLogin } from "../../components/Header/Header";
 import { RegisterForm } from "../../components/index";
 
 
@@ -6,7 +6,7 @@ export const RegisterPage = () => {
 
   return (
     <>
-      <HeaderRegister />
+      <HeaderLogin />
       <main className="div-inputs div-register">
         <section>
           <h2 className="login-title">Crie sua conta</h2>

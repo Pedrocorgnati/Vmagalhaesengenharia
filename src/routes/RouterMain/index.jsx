@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import { useState } from 'react';
-import { LoginPage, DashboardPage, RegisterPage, NotFoundPage } from '../../pages/';
+import { LoginPage, DashboardPage, NotFoundPage } from '../../pages/';
 import { HomePage } from '../../pages/HomePage/HomePage';
 import { AboutUs } from '../../pages/PublicPages/AboutUs';
 import { Clients } from '../../pages/PublicPages/Clients';
@@ -16,7 +16,6 @@ export const RouterMain = () => {
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/login" element={<LoginPage setUser={setUser} />} />
-                <Route path="/register" element={<RegisterPage />} />
                 <Route path="/dashboard" element={<DashboardPage user={user} />} />
                 <Route path="/clientes" element={<Clients />} />
                 <Route path="/empresa" element={<AboutUs />} />

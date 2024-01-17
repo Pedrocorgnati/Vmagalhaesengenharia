@@ -6,11 +6,6 @@ const ButtonLogin = () => {
     );
 }
 
-const ButtonSignUp = () => {
-    return (
-        <Link className="button-sign-up" to="/register">Cadastre-se</Link>
-    );
-}
 const ButtonSubmit = () => {
     return (
         <div className="button-submit">
@@ -33,7 +28,7 @@ const ButtonLogout = ({ userLogout }) => {
 const ButtonAdminDash = () => {
     return (
         <>
-            <Link className="button-admin-dashboard" to="/admin-dashboard">Botão para teste: Acessar área do Administrador</Link>        </>
+            <Link className="button-admin-dashboard" to="/admin-dashboard">Botão temporário: Acessar área do Administrador</Link>        </>
     )
 }
-export { ButtonAdminDash, ButtonLogin, ButtonLogout, ButtonReturn, ButtonSignUp, ButtonSubmit };
+export { ButtonAdminDash, ButtonLogin, ButtonLogout, ButtonReturn, ButtonSubmit };

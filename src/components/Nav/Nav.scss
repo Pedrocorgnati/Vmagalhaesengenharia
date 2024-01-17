@@ -2,12 +2,18 @@
 @import "../../App.scss";
 
 .nav-Home {
-    display: flex;
-    @include between-row;
-    width: 80%;
+
+    width: 100vw;
     background: $lightblue;
-    padding: 20px 80px;
-    margin-top: 010px;
+    padding: 20px 0px;
+    display: flex;
+    @include center-row;
+
+    div {
+        width: 90%;
+        display: flex;
+        @include around-row;
+    }
 }
 
 .nav-Home-Link {

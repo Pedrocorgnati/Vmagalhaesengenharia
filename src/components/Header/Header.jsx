@@ -19,24 +19,12 @@ const HeaderLogin = () => {
         </div>
         <nav className="homePage-Nav">
           <Link className='Link-login' to="/login">Login</Link>
-          <Link className='Link-login' to="Register">Registrar</Link>
         </nav>
       </header>
     </>
   )
 }
-const HeaderRegister = () => {
 
-
-  return (
-    <>
-      <header className='header-register'>
-        <h1 className="text-logo"><span>V</span>magalhães</h1>
-        <ButtonReturn />
-      </header>
-    </>
-  )
-}
 const HeaderDashboard = () => {
 
 
@@ -45,6 +33,7 @@ const HeaderDashboard = () => {
       <header className='header-dashboard'>
         <h1 className="text-logo"><span>V</span>magalhães</h1>
         <ButtonLogout />
+
       </header>
     </>
   )
@@ -60,5 +49,5 @@ const HeaderAdmin = () => {
   );
 };
 
-export { HeaderAdmin, HeaderDashboard, HeaderLogin, HeaderRegister }
+export { HeaderAdmin, HeaderDashboard, HeaderLogin }
 

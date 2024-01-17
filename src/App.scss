@@ -27,6 +27,7 @@ $darkblue: var(--color-blue-3);
 
 body {
     background: $white;
+    width: 100vw;
     display: flex;
     @include center-column;
 }
@@ -45,8 +46,7 @@ p {
     line-height: 14px;
 }
 
-.div-inputs,
-.div-register {
+.div-inputs {
     background: $grey4;
     display: flex;
     @include center-column;

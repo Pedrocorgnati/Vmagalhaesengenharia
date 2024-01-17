@@ -5,7 +5,7 @@ footer {
     display: flex;
     @include center-column;
     background: $lightblue;
-    width: 100%;
+    width: 100vw;
 }
 
 .footerAdress {

@@ -7,7 +7,10 @@
 }
 
 header {
-    padding: 20px;
+    padding: 20px 0px;
+    width: 70%;
+    display: flex;
+    @include between-row;
 }
 
 .text-logo {
@@ -26,7 +29,6 @@ header {
 .header-login {
     display: flex;
     @include between-row;
-    gap: 60vw;
 }
 
 .logo-and-name {
@@ -36,7 +38,6 @@ header {
     justify-content: flex-start;
 }
 
-.header-register,
 .header-dashboard {
     height: 50px;
     display: flex;

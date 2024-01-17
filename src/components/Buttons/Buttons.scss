@@ -88,15 +88,13 @@ button {
     line-height: 22px;
     width: 79px;
 
-}
+    &:hover {
+        background: $white;
+        color: $grey3;
+        border: 1px solid $grey3;
+        transition: 0.5s;
 
-.Link-return:hover,
-.button-logout:hover {
-    background: $white;
-    color: $grey3;
-    border: 1px solid $grey3;
-    transition: 0.5s;
-
+    }
 }
 
 label {
@@ -113,7 +111,7 @@ label {
     border-radius: 10px;
     width: 150px;
     text-decoration: none;
-    border: 1px solid red;
+    border: 2px solid lightgreen;
     height: 50px;
     padding: 10px 30px;
     display: flex;

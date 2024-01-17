@@ -20,4 +20,23 @@
 .aboutUs {
     width: 80%;
     margin-bottom: 50px;
+    display: flex;
+    @include center-column;
+
+    img {
+        width: 80%;
+    }
+}
+
+.whatsapp-icon {
+    position: fixed;
+    right: 15px;
+    bottom: 25px;
+    width: 75px;
+    height: auto;
+    transition: transform 0.2s ease;
+
+    &:hover {
+        transform: scale(1.2);
+    }
 }
