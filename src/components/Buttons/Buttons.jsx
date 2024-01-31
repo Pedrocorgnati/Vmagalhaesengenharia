@@ -28,7 +28,10 @@ const ButtonLogout = ({ userLogout }) => {
 const ButtonAdminDash = () => {
     return (
         <>
-            <Link className="button-admin-dashboard" to="/admin-dashboard">Botão temporário: Acessar área do Administrador</Link>        </>
+            <Link className="button-admin-dashboard" to="/admin-dashboard">Botão temporário: Acessar área do Administrador</Link>
+            <Link className="button-admin-dashboard" to="/dashboard">Botão temporário: Acessar área do Cliente</Link>
+        </>
+
     )
 }
 export { ButtonAdminDash, ButtonLogin, ButtonLogout, ButtonReturn, ButtonSubmit };

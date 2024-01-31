@@ -5,13 +5,13 @@ import "../Admin.scss";
 
 
 export const AddClientsForm = ({ onClientAdded }) => {
-    const [client, setClient] = useState({ client: '', name: '', birthday: '', city: '' });
+    const [client, setClient] = useState({ client: '', name: '', birthday: '', city: '', initialPassword: '' });
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if (Object.values(client).every(field => field)) {
             clientsService.addClient({ ...client, id: generateUniqueId() });
-            setClient({ client: '', name: '', birthday: '', city: '' });
+            setClient({ client: '', name: '', birthday: '', city: '', initialPassword: '' });
             onClientAdded();
         } else {
             alert('Todos os campos são obrigatórios');
@@ -61,6 +61,16 @@ export const AddClientsForm = ({ onClientAdded }) => {
                     type="text"
                     name="city"
                     value={client.city}
+                    onChange={handleChange}
+                    required
+                />
+            </div>
+            <div className='div-labelInput'>
+                <label>Senha Inicial do Cliente:</label>
+                <input
+                    type="password"
+                    name="initialPassword"
+                    value={client.initialPassword}
                     onChange={handleChange}
                     required
                 />

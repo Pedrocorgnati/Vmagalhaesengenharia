@@ -43,7 +43,6 @@ export const ClientTest = () => {
 
     return (
         <>
-            <h1>Simulador para testar área do cliente</h1>
             <h4>Escolher um dos clientes para testar como será a visualização dele</h4>
             <div className="reports-form">
                 <h2>Simulador de Login</h2>

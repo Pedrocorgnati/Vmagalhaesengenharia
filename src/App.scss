@@ -32,6 +32,10 @@ body {
     @include center-column;
 }
 
+section {
+    display: flex;
+}
+
 h2 {
     color: $darkblue;
     font-weight: 700;

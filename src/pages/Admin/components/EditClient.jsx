@@ -8,14 +8,17 @@ export const EditClient = ({ clientId, onClientUpdated, onClose }) => {
         client: "",
         name: "",
         birthday: "",
-        city: ""
+        city: "",
+        initialPassword: ""
     });
+
     const handleSubmit = (e) => {
         e.preventDefault();
         clientsService.updateClient(clientId, client);
         onClientUpdated();
         onClose();
     };
+
     const handleChange = (e) => {
         setClient({ ...client, [e.target.name]: e.target.value });
     };
@@ -55,6 +58,15 @@ export const EditClient = ({ clientId, onClientUpdated, onClose }) => {
                     type="text"
                     name="city"
                     value={client.city}
+                    onChange={handleChange}
+                />
+            </div>
+            <div className='div-labelInput'>
+                <label>Senha Inicial:</label>
+                <input
+                    type="password"
+                    name="initialPassword"
+                    value={client.initialPassword}
                     onChange={handleChange}
                 />
             </div>

@@ -5,6 +5,14 @@
     display: flex;
     @include center-column;
 
+    @include mq (tablet) {
+        margin-left: 150px;
+    }
+
+    @include mq (desktop) {
+        margin-left: 0px;
+    }
+
 }
 
 .homePage-Nav {
@@ -23,6 +31,12 @@
     display: flex;
     @include center-column;
 
+    .aboutUsText,
+    .whatWeDoText {
+        font-size: 15px;
+        font-weight: 500;
+    }
+
     img {
         width: 80%;
     }
@@ -30,8 +44,8 @@
 
 .whatsapp-icon {
     position: fixed;
-    right: 15px;
-    bottom: 25px;
+    right: 25px;
+    bottom: 55px;
     width: 75px;
     height: auto;
     transition: transform 0.2s ease;

@@ -136,6 +136,32 @@ button {
     .section-admin {
         display: flex;
         @include start-column;
+
+        @include mq (desktop) {
+            display: flex;
+            @include start-row;
+        }
+    }
+}
+
+.config-page {
+    div {
+        margin-top: 20px;
+        display: flex;
+
+        @include center-column;
+    }
+}
+
+.section-admin {
+    display: flex;
+    @include start-column;
+
+    @include mq (1350) {
+        display: flex;
+        @include start-row;
+        gap: 50px;
+        align-items: flex-start;
     }
 }
 
