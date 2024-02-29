@@ -9,9 +9,9 @@
 }
 
 .what-we-do-card {
-    width: 250px;
+    width: 350px;
     border: 1px solid #ccc;
-    padding: 20px;
+    padding: 20px 10px;
     display: flex;
     @include center-column;
 }
@@ -25,10 +25,13 @@
 .card-title {
     font-size: 1.5rem;
     margin-top: 10px;
+    width: 80%;
 }
 
 .card-description {
     margin-top: 10px;
-    font-size: 12px;
     font-weight: 500;
+    font-size: 15px;
+    line-height: 20px;
+    width: 80%;
 }

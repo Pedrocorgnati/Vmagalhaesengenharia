@@ -83,12 +83,15 @@ button {
 .client-info {
     height: 20px;
     gap: 10px;
+    margin-top: 20px;
 }
 
 .report-theme,
 .client-theme {
     display: flex;
     @include start-column;
+    margin-top: 10px;
+    margin-bottom: 10px;
 
     .report-title,
     .client-title {
@@ -155,9 +158,10 @@ button {
 
 .section-admin {
     display: flex;
+    margin-left: 300px;
     @include start-column;
 
-    @include mq (1350) {
+    @include mq (1550) {
         display: flex;
         @include start-row;
         gap: 50px;

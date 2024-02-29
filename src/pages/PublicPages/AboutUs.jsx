@@ -7,8 +7,10 @@ export const AboutUs = () => {
         <>
             <HeaderLogin />
             <Nav />
-            <h1>Aqui estarão informações importantes sobre a empresa</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum corporis praesentium molestias. Rerum quos tenetur amet voluptatem nemo, dignissimos quas delectus explicabo maxime ad ipsam dolore quidem consequatur incidunt natus!</p>
+            <h1>Nossa Missão</h1>
+            <p>Garantir a segurança e durabilidade das construções de nossos por meio de ensaios dos materiais, assegurando que atenda aos mais altos padrões da qualidade, as normas técnicas vigentes, sempre proporcionando tranquilidade, confiança e transparência aos nossos clientes. Buscamos atuar de forma sustentável ao meio ambiente, alinhados ainda a políticas sociais e com normas rígidas de governança corporativa.</p>
+            <h1>Nossa Visão</h1>
+            <p>Ser a principal referência no país em controle tecnológico dos materiais, inovando constantemente para antecipar as necessidades do setor de engenharia civil, contribuindo assim para um ambiente seguro, sustentável e integro.</p>
             <ButtonReturn />
             <Footer />
         </>

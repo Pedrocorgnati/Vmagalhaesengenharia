@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { LoginPage, DashboardPage, NotFoundPage } from '../../pages/';
 import { HomePage } from '../../pages/HomePage/HomePage';
 import { AboutUs } from '../../pages/PublicPages/AboutUs';
-import { Clients } from '../../pages/PublicPages/Clients';
+import { Partners } from '../../pages/PublicPages/Partners.jsx';
 import { ContactUs } from '../../pages/PublicPages/ContactUs';
 import { AdmLogin } from "../../pages/Admin/AdmLogin/AdmLogin.jsx";
 import { AdminDashboard } from "../../pages/Admin/Admin.jsx";
@@ -20,8 +20,8 @@ export const RouterMain = () => {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/login" element={<LoginPage setUser={setUser} />} />
                 <Route path="/dashboard" element={<DashboardPage user={user} />} />
-                <Route path="/nossos-clientes" element={<Clients />} />
-                <Route path="/empresa" element={<AboutUs />} />
+                <Route path="/parceiros" element={<Partners />} />
+                <Route path="/missao-e-visao" element={<AboutUs />} />
                 <Route path="/contato" element={<ContactUs />} />
                 <Route path="*" element={<NotFoundPage />} />
                 <Route path="/admin" element={<AdmLogin />} />
