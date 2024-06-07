@@ -1,60 +1,32 @@
+import { getFirestore, collection, getDocs, doc, setDoc, updateDoc, deleteDoc } from "firebase/firestore";
+import { db } from './firebaseConfig';
+
 class ClientsService {
-    constructor() {
-        this.MockClients = [
-            {
-                id: "66968d",
-                client: "corgnati.pedro@gmail.com",
-                name: "Pedro",
-                birthday: "1989-01-25",
-                city: "Cachoeira Paulista",
-                initialPassword: "senha123"
-            },
-            {
-                id: "hj9udy",
-                client: "contato@bola.com",
-                name: "Bola",
-                birthday: "1985-03-08",
-                city: "Lorena",
-                initialPassword: "senha456"
-            },
-            {
-                id: "am5g27",
-                client: "manoel@gmail.com",
-                name: "Manoel",
-                birthday: "1976-02-10",
-                city: "Guaratinguetá",
-                initialPassword: "senha789"
-            },
-        ];
-    }
+  constructor() {
+    this.clientsCollection = collection(db, "clients");
+  }
 
-    getClientsList() {
-        // Retorna uma promessa com os clientes
-        return Promise.resolve(this.MockClients);
-    }
+  async getClientsList() {
+    const clientsSnapshot = await getDocs(this.clientsCollection);
+    return clientsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+  }
 
-    findClientById(clientId) {
-        // Encontra um cliente pelo ID
-        return this.MockClients.find(client => client.id === clientId);
-    }
+  async findClientById(clientId) {
+    const clientDoc = await getDoc(doc(this.clientsCollection, clientId));
+    return clientDoc.exists() ? { id: clientDoc.id, ...clientDoc.data() } : null;
+  }
 
-    addClient(newClient) {
-        // Adiciona um novo cliente
-        this.MockClients.push(newClient);
-    }
+  async addClient(newClient) {
+    await setDoc(doc(this.clientsCollection, newClient.id), newClient);
+  }
 
-    updateClient(clientId, updatedClient) {
-        // Atualiza um cliente existente
-        const clientIndex = this.MockClients.findIndex(client => client.id === clientId);
-        if (clientIndex !== -1) {
-            this.MockClients[clientIndex] = { ...updatedClient, id: clientId };
-        }
-    }
+  async updateClient(clientId, updatedClient) {
+    await updateDoc(doc(this.clientsCollection, clientId), updatedClient);
+  }
 
-    deleteClient(clientId) {
-        // Remove um cliente
-        this.MockClients = this.MockClients.filter(client => client.id !== clientId);
-    }
+  async deleteClient(clientId) {
+    await deleteDoc(doc(this.clientsCollection, clientId));
+  }
 }
 
 export const clientsService = new ClientsService();
