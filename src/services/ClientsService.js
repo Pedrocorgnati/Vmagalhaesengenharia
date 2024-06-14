@@ -1,31 +1,69 @@
-import { getFirestore, collection, getDocs, doc, setDoc, updateDoc, deleteDoc } from "firebase/firestore";
-import { db } from './firebaseConfig';
+import axios from 'axios';
 
 class ClientsService {
-  constructor() {
-    this.clientsCollection = collection(db, "clients");
-  }
-
   async getClientsList() {
-    const clientsSnapshot = await getDocs(this.clientsCollection);
-    return clientsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    try {
+      const response = await axios.get('http://localhost:5000/api/clients', {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      });
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching clients list", error);
+      return [];
+    }
   }
 
   async findClientById(clientId) {
-    const clientDoc = await getDoc(doc(this.clientsCollection, clientId));
-    return clientDoc.exists() ? { id: clientDoc.id, ...clientDoc.data() } : null;
+    try {
+      const response = await axios.get(`http://localhost:5000/api/clients/${clientId}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      });
+      return response.data;
+    } catch (error) {
+      console.error("Error finding client", error);
+      return null;
+    }
   }
 
   async addClient(newClient) {
-    await setDoc(doc(this.clientsCollection, newClient.id), newClient);
+    try {
+      const response = await axios.post('http://localhost:5000/api/clients', newClient, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      });
+      return response.data;
+    } catch (error) {
+      console.error("Error adding client", error);
+    }
   }
 
   async updateClient(clientId, updatedClient) {
-    await updateDoc(doc(this.clientsCollection, clientId), updatedClient);
+    try {
+      await axios.put(`http://localhost:5000/api/clients/${clientId}`, updatedClient, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      });
+    } catch (error) {
+      console.error("Error updating client", error);
+    }
   }
 
   async deleteClient(clientId) {
-    await deleteDoc(doc(this.clientsCollection, clientId));
+    try {
+      await axios.delete(`http://localhost:5000/api/clients/${clientId}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      });
+    } catch (error) {
+      console.error("Error deleting client", error);
+    }
   }
 }
 

@@ -1,4 +1,5 @@
-import "../Input/Inputs.scss";
+
+import "../Input.scss";
 import { forwardRef } from "react";
 
 export const InputPassword = forwardRef(({ label, error, ...rest }, ref) => {

@@ -46,7 +46,6 @@ export const ClientsRenderList = ({ filters }) => {
             <h2 className='client-title'>{client.name}</h2>
             <div className="client-info">
               <p>Cliente: {client.client}</p>
-              <p>Aniversário: {new Date(client.birthday).toLocaleDateString()}</p>
               <p>Cidade: {client.city}</p>
             </div>
           </div>

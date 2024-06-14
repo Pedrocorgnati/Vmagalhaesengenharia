@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
-import { authService } from '../../services/AuthService';
-import { gUserState } from '../../models/user.model';
-import './LoginPage.scss';
-import logo from '../../Assets/Logo/Logo-png.png';
+import { authService } from '../../../../services/AuthService';
+import { gUserState } from '../../../../models/user.model';
+import './AdmLogin.scss';
+import logo from '../../../../Assets/Logo/Logo-png.png';
 
-const LoginPage = ({ setUser }) => {
+export const AdmLogin = ({ setUser }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
@@ -16,12 +16,12 @@ const LoginPage = ({ setUser }) => {
     e.preventDefault();
     const loginResult = await authService.login(email, password, setUserState);
     if (loginResult.success) {
+      setUser(loginResult.data);
       const userRole = loginResult.data.role;
       if (userRole === 'admin') {
-        alert('Error: Administrators cannot log in here.');
+        navigate('/admin-dashboard');
       } else {
-        setUser(loginResult.data);
-        navigate('/dashboard');
+        alert('Error: Only administrators can log in here.');
       }
     } else {
       alert('Error logging in!');
@@ -40,7 +40,7 @@ const LoginPage = ({ setUser }) => {
             <input type="email" id="email" name="email" placeholder="Email" required onChange={e => setEmail(e.target.value)} />
             <input type="password" id="password" name="password" placeholder="Password" required onChange={e => setPassword(e.target.value)} />
           </div>
-          <button type="submit" className="login-button">Login</button>
+          <button type="submit" className="login-button">Login Admin</button>
           <button type="button" className="back-button" onClick={() => navigate('/')}>Voltar</button>
         </form>
       </section>
@@ -48,4 +48,3 @@ const LoginPage = ({ setUser }) => {
   );
 };
 
-export default LoginPage;

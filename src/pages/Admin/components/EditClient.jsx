@@ -48,15 +48,7 @@ export const EditClient = ({ clientId, onClientUpdated, onClose }) => {
           onChange={handleChange}
         />
       </div>
-      <div className='div-labelInput'>
-        <label>Aniversário:</label>
-        <input
-          type="date"
-          name="birthday"
-          value={client.birthday}
-          onChange={handleChange}
-        />
-      </div>
+
       <div className='div-labelInput'>
         <label>Cidade do cliente:</label>
         <input

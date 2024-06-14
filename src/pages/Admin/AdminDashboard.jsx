@@ -1,15 +1,15 @@
 import React from 'react';
-import { HeaderAdmin } from "../../components/Header/Header.jsx";
 import { AsideAdmin } from './components/AsideAdmin/AsideAdmin.jsx';
 
-export const AdminDashboard = () => {
+export const AdminDashboard = ({ userLogout }) => {
     return (
         <>
-            <HeaderAdmin />
-            <AsideAdmin />
+            <AsideAdmin userLogout={userLogout} />
             <div className='main-admin'>
                 <h1>Bom dia!</h1>
             </div>
         </>
     );
 };
+
+export default AdminDashboard;

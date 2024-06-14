@@ -1,8 +1,8 @@
-@import "../../../../utils/Mixins/Mixins.scss";
-@import "../../../../App.scss";
+@import "../../../../../utils/Mixins/Mixins.scss";
+@import "../../../../../App.scss";
 
 // Estilos padrão (para telas menores que tablet)
-.aside__admin {
+.aside__client {
     display: flex;
     position: static;
     width: 120vw;
@@ -13,7 +13,7 @@
     background: $lightblue;
     flex-wrap: wrap;
 
-    .button__aside-admin, .button-logout {
+    .button__aside-client, .button-logout {
         color: $blue;
         background: $white;
         border: 1px solid $blue;
@@ -34,7 +34,7 @@
 
 // Estilos para telas de tablet e maiores
 @include mq(tablet) {
-    .aside__admin {
+    .aside__client {
         position: fixed;
         left: 0;
         top: 0;
@@ -48,7 +48,7 @@
         align-items: flex-start;
         padding: 30px 20px;
 
-        .button__aside-admin, .button-logout {
+        .button__aside-client, .button-logout {
             color: $blue;
             background: $white;
             border: 1px solid $blue;

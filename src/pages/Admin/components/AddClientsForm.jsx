@@ -5,16 +5,16 @@ import "../../../components/Buttons/Buttons.scss";
 import "../Admin.scss";
 
 export const AddClientsForm = ({ onClientAdded }) => {
-  const [client, setClient] = useState({ client: '', name: '', birthday: '', city: '', initialPassword: '', role: 'client' });
+  const [client, setClient] = useState({ client: '', name: '', city: '', initialPassword: '', role: 'client' });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (Object.values(client).every(field => field)) {
-      const { client: email, initialPassword, role, name, birthday, city } = client;
-      const signUpResult = await authService.signUp(email, initialPassword, role, name, birthday, city);
+      const { client: email, initialPassword, role, name, city } = client;
+      const signUpResult = await authService.signUp(email, initialPassword, role, name, city);
       if (signUpResult.success) {
         await clientsService.addClient({ ...client, id: generateUniqueId() });
-        setClient({ client: '', name: '', birthday: '', city: '', initialPassword: '', role: 'client' });
+        setClient({ client: '', name: '', city: '', initialPassword: '', role: 'client' });
         onClientAdded();
       } else {
         alert('Error creating user account');
@@ -46,16 +46,6 @@ export const AddClientsForm = ({ onClientAdded }) => {
           type="text"
           name="name"
           value={client.name}
-          onChange={handleChange}
-          required
-        />
-      </div>
-      <div className='div-labelInput'>
-        <label>Data de aniversário:</label>
-        <input
-          type="date"
-          name="birthday"
-          value={client.birthday}
           onChange={handleChange}
           required
         />

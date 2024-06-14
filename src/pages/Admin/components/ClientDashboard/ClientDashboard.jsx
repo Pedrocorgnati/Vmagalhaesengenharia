@@ -1,22 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { clientsService } from '../../../../services/ClientsService';
 import { reportsService } from '../../../../services/ReportsService';
 import downloadIcon from '../../../../Assets/Icons/download.svg'; // Ajuste o caminho conforme necessário
+import { useRecoilValue } from 'recoil';
+import { gUserState } from '../../../../models/user.model';
+import { AsideClient } from './AsideClient/AsideClient';
 
-export const ClientTest = () => {
-    const [clients, setClients] = useState([]);
-    const [selectedClient, setSelectedClient] = useState('');
-    const [selectedClientName, setSelectedClientName] = useState('');
+
+export const ClientDashboard = ({ userLogout }) => {
     const [reports, setReports] = useState([]);
     const [filterType, setFilterType] = useState('');
-
-    useEffect(() => {
-        const loadClients = async () => {
-            const clientsData = await clientsService.getClientsList();
-            setClients(clientsData);
-        };
-        loadClients();
-    }, []);
+    const userState = useRecoilValue(gUserState);
 
     useEffect(() => {
         const loadReports = async () => {
@@ -26,36 +19,19 @@ export const ClientTest = () => {
         loadReports();
     }, []);
 
-    const handleClientChange = (e) => {
-        const selectedEmail = e.target.value;
-        setSelectedClient(selectedEmail);
-        const client = clients.find(client => client.client === selectedEmail);
-        setSelectedClientName(client ? client.name : '');
-    };
-
     const handleTypeChange = (e) => {
         setFilterType(e.target.value);
     };
 
     const filteredReports = reports.filter(report => {
-        return report.client === selectedClient && (!filterType || report.type === filterType);
+        return report.client === userState.email && (!filterType || report.type === filterType);
     });
 
     return (
-        <>
-            <h4>Escolher um dos clientes para testar como será a visualização dele</h4>
-            <div className="reports-form">
-                <h2>Simulador de Login</h2>
-                <select name="client" value={selectedClient} onChange={handleClientChange} required>
-                    <option value="">Selecione um cliente</option>
-                    {clients.map(client => (
-                        <option key={client.id} value={client.client}>{client.client}</option>
-                    ))}
-                </select>
-            </div>
-            <div className='simulador-area-cliente'>
-                <h4>(Informações que o cliente irá ver na área de login dele)</h4>
-                {selectedClientName && <h1>Olá, {selectedClientName}</h1>}
+        <div className='client-dashboard'>
+            <AsideClient userLogout={userLogout} />
+            <div className='content'>
+                <h1>Olá, {userState.email}</h1>
                 <h3>Seja bem vindo!</h3>
 
                 <div>
@@ -71,21 +47,21 @@ export const ClientTest = () => {
                     </select>
                     <button type="button" onClick={() => setFilterType('')}>Limpar filtros</button>
                 </div>
-                <h4>Os clientes não terão opção de deletar ou editar, apenas download.</h4>
                 <h2>Faça o download de seus relatórios abaixo:</h2>
-                <div
-                >
+                <div>
+                    {filteredReports.length === 0 && <p>Não consta nenhum relatório</p>}
                     {filteredReports.map(report => (
                         <div className='relatorio-renderizado-cliente' key={report.id}>
                             <p>{report.title}</p>
                             <a href={report.Link} target="_blank" rel="noopener noreferrer">
                                 <img src={downloadIcon} alt="Download" />
                             </a>
-                            {/* Outras informações do report */}
                         </div>
                     ))}
                 </div>
             </div>
-        </>
+        </div>
     );
-}
+};
+
+export default ClientDashboard;

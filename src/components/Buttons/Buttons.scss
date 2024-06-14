@@ -1,7 +1,7 @@
 @import "../../App.scss";
 
 
-
+.button-update-password,
 .button-login,
 .button-sign-up,
 .button-submit {
@@ -32,12 +32,11 @@
     transition: 0.5s;
 
 }
-
+.button-update-password,
 .button-login {
     background: $blue;
 
 }
-
 .button-login:hover {
     background: white;
     color: $blue;

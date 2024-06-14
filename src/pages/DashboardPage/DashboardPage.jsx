@@ -1,14 +1,13 @@
 import { HeaderDashboard } from "../../components/Header/Header"
 import React from 'react';
-import { ReportList } from "../../components/ReportList/ReportList";
-import { ClientTest } from "../../pages/Admin/components/ClientTest/ClientTest";
+import { ClientDashboard } from "../../pages/Admin/components/ClientDashboard/ClientDashboard";
 
-export const DashboardPage = () => {
+const DashboardPage = () => {
   return (
     <>
       <HeaderDashboard />
-      <ClientTest />
+      <ClientDashboard />
     </>
   )
 }
-
+export default DashboardPage;
