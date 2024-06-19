@@ -15,15 +15,16 @@ const LoginPage = ({ setUser }) => {
 
   const loginWithEmailAndPass = async (e) => {
     e.preventDefault();
-    console.log('Attempting login'); // Log tentativa de login
+    console.log('Attempting login');
     const loginResult = await authService.login(email, password, setUserState);
-    console.log('Login result:', loginResult); // Log resultado do login
+    console.log('Login response:', loginResult); // Log da resposta do login
     if (loginResult.success) {
       const userRole = loginResult.data.role;
+      console.log('User role:', userRole); // Log do papel do usuário
       setUser(loginResult.data);
       if (userRole === 'admin') {
         navigate('/admin-dashboard');
-      } else if (userRole === 'user') {
+      } else if (userRole === 'client') {
         navigate('/dashboard');
       } else {
         alert('Error logging in!');
@@ -69,3 +70,4 @@ const LoginPage = ({ setUser }) => {
 
 export default LoginPage;
 
+//'''

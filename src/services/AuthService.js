@@ -1,7 +1,5 @@
 //src/services/AuthService.js
 //'''
-// src/services/AuthService.js
-// src/services/AuthService.js
 import axios from 'axios';
 
 class AuthService {
