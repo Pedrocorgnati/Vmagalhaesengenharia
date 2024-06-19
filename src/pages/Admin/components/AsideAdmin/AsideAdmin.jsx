@@ -7,7 +7,7 @@ export const AsideAdmin = ({ userLogout }) => {
     <>
       <aside className="aside__admin">
         <Link className="button__aside-admin" to="/cadastrar-usuario">Cadastro de Usuário</Link>
-        <Link className="button__aside-admin" to="/clientes">Meus Clientes</Link>
+        <Link className="button__aside-admin" to="/usuarios">Listar usuários</Link>
         <Link className="button__aside-admin" to="/cadastrar-relatorios">Cadastrar Relatórios</Link>
         <Link className="button__aside-admin" to="/listar-relatorios">Listar Relatórios</Link>
         <Link className="button__aside-admin" to="/configuracoes">Alterar senha</Link>

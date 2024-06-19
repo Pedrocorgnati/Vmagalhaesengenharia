@@ -1,6 +1,5 @@
 //backend/routes/clients.js
 //'''
-// backend/routes/clients.js
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -8,56 +7,51 @@ const router = express.Router();
 const User = require('../models/User');
 
 // Middleware para verificar token e o papel do usuário
-const verifyAdmin = (req, res, next) => {
+const verifyUser = (req, res, next) => {
   const token = req.headers['authorization']?.split(' ')[1];
   if (!token) return res.status(401).send('Access denied');
 
   try {
     const verified = jwt.verify(token, process.env.JWT_SECRET);
     req.user = verified;
-    if (req.user.role !== 'admin') return res.status(403).send('Access forbidden');
     next();
   } catch (error) {
     res.status(400).send('Invalid token');
   }
 };
 
-// Adicionar novo cliente
-router.post('/', verifyAdmin, async (req, res) => {
-  const { email, password, name, city, role } = req.body;
-  console.log('Create user request data:', req.body); // Log dados da requisição
+router.get('/', verifyUser, async (req, res) => {
+  try {
+    const users = await User.find({ role: { $in: ['client', 'admin'] } });
+    res.json(users);
+  } catch (error) {
+    res.status(400).send(error);
+  }
+});
 
-  if (!email || !password || !name || !city || !role) {
-    console.log('Missing fields:', { email, password, name, city, role }); // Log dos campos faltantes
-    return res.status(400).json({ message: 'All fields are required' });
+router.post('/change-password', verifyUser, async (req, res) => {
+  const { oldPassword, newPassword } = req.body;
+  const user = await User.findOne({ email: req.user.email });
+  if (!user || !await bcrypt.compare(oldPassword, user.password)) {
+    return res.status(401).send('Invalid credentials');
   }
 
+  user.password = await bcrypt.hash(newPassword, 10);
+  await user.save();
+  res.status(200).send('Password changed');
+});
+
+router.get('/reports', verifyUser, async (req, res) => {
   try {
-    const existingUser = await User.findOne({ email });
-    if (existingUser) {
-      console.log('Email already in use:', email);
-      return res.status(400).json({ message: 'Email already in use' });
-    }
-
-    const hashedPassword = await bcrypt.hash(password, 10);
-    const user = new User({
-      email,
-      password: hashedPassword,
-      name,
-      city,
-      role
-    });
-
-    await user.save();
-    console.log('User created successfully:', user); // Log usuário criado com sucesso
-    res.status(201).json({ message: 'User created', user });
+    const reports = await Report.find({ clienteEmail: req.user.email });
+    res.json(reports);
   } catch (error) {
-    console.error('Error creating user:', error); // Log erro ao criar usuário
-    res.status(400).json({ message: 'Error creating user', error });
+    res.status(400).send(error);
   }
 });
 
 module.exports = router;
+
 
 
 
