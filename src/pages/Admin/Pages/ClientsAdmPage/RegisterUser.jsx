@@ -1,3 +1,5 @@
+//src/pages/Admin/Pages/ClientsAdmPage/RegisterUser.jsx
+//'''
 import React, { useState } from 'react';
 import { HeaderAdmin } from "../../../../components/Header/Header";
 import { AsideAdmin } from "../../components/AsideAdmin/AsideAdmin";
@@ -23,3 +25,4 @@ export const RegisterUser = () => {
     </>
   );
 };
+//'''

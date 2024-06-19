@@ -11,12 +11,21 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  name: {
+    type: String,
+    required: true,
+  },
+  city: {
+    type: String,
+    required: true,
+  },
   role: {
     type: String,
-    enum: ['admin', 'user'],
-    // default: 'user',
+    required: true,
+    enum: ['client', 'admin'], // Adicionando enum para validar os valores de role
   },
 });
 
 module.exports = mongoose.model('User', UserSchema);
+
 //'''

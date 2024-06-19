@@ -1,5 +1,6 @@
 //backend/routes/admin.js 
 //'''
+// backend/routes/admin.js
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -21,24 +22,35 @@ const verifyAdmin = (req, res, next) => {
 };
 
 router.post('/create-user', verifyAdmin, async (req, res) => {
-  const { username, email, nome, dataAniversario, cidade, password, role } = req.body;
-  const hashedPassword = await bcrypt.hash(password, 10);
-  const user = new User({
-    username,
-    email,
-    nome,
-    dataAniversario,
-    cidade,
-    password: hashedPassword,
-    role
-  });
+  const { email, password, name, city, role } = req.body;
+  console.log('Create user request data:', req.body); // Log dados da requisição
+
+  if (!email || !password || !name || !city || !role) {
+    console.log('Missing fields:', { email, password, name, city, role }); // Log dos campos faltantes
+    return res.status(400).json({ message: 'All fields are required' });
+  }
+
   try {
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const user = new User({
+      email,
+      password: hashedPassword,
+      name,
+      city,
+      role
+    });
+
     await user.save();
-    res.status(201).send('User created');
+    console.log('User created successfully:', user); // Log usuário criado com sucesso
+    res.status(201).json({ message: 'User created', user });
   } catch (error) {
-    res.status(400).send(error);
+    console.error('Error creating user:', error); // Log erro ao criar usuário
+    res.status(400).json({ message: 'Error creating user', error });
   }
 });
 
 module.exports = router;
+
+
+
 //'''

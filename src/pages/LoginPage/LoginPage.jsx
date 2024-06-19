@@ -69,5 +69,3 @@ const LoginPage = ({ setUser }) => {
 
 export default LoginPage;
 
-
-//'''

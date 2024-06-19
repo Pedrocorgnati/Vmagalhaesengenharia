@@ -1,10 +1,12 @@
 //src/services/AuthService.js
 //'''
+// src/services/AuthService.js
 import axios from 'axios';
 
 class AuthService {
   async signUp(email, password, role, name, city) {
     try {
+      console.log('SignUp data:', { email, password, role, name, city }); // Log dados de cadastro
       const response = await axios.post('http://localhost:5000/api/admin/create-user', {
         email,
         password,
@@ -20,6 +22,9 @@ class AuthService {
       return { success: true, data: response.data };
     } catch (error) {
       console.error("Error signing up!", error);
+      if (error.response) {
+        console.error("Error response data:", error.response.data); // Log resposta de erro
+      }
       return { success: false };
     }
   }
@@ -58,6 +63,7 @@ class AuthService {
 }
 
 export const authService = new AuthService();
+
 
 
 //'''
