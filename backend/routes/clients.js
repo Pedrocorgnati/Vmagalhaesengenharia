@@ -1,45 +1,45 @@
-//backend/routes/clients.js'''
+//backend/routes/clients.js
+//'''
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const router = express.Router();
 const User = require('../models/User');
-const Report = require('../models/Report');
 
 // Middleware para verificar token e o papel do usuário
-const verifyUser = (req, res, next) => {
+const verifyAdmin = (req, res, next) => {
   const token = req.headers['authorization']?.split(' ')[1];
   if (!token) return res.status(401).send('Access denied');
 
   try {
     const verified = jwt.verify(token, process.env.JWT_SECRET);
     req.user = verified;
+    if (req.user.role !== 'admin') return res.status(403).send('Access forbidden');
     next();
   } catch (error) {
     res.status(400).send('Invalid token');
   }
 };
 
-router.post('/change-password', verifyUser, async (req, res) => {
-  const { oldPassword, newPassword } = req.body;
-  const user = await User.findOne({ username: req.user.username });
-  if (!user || !await bcrypt.compare(oldPassword, user.password)) {
-    return res.status(401).send('Invalid credentials');
-  }
-
-  user.password = await bcrypt.hash(newPassword, 10);
-  await user.save();
-  res.status(200).send('Password changed');
-});
-
-router.get('/reports', verifyUser, async (req, res) => {
+// Adicionar novo cliente
+router.post('/', verifyAdmin, async (req, res) => {
+  const { email, password, name, city, role } = req.body;
+  const hashedPassword = await bcrypt.hash(password, 10);
+  const user = new User({
+    email,
+    password: hashedPassword,
+    name,
+    city,
+    role
+  });
   try {
-    const reports = await Report.find({ clienteEmail: req.user.email });
-    res.json(reports);
+    await user.save();
+    res.status(201).json({ message: 'Client created', user });
   } catch (error) {
-    res.status(400).send(error);
+    res.status(400).json({ message: 'Error creating client', error });
   }
 });
 
 module.exports = router;
+
 //'''

@@ -9,7 +9,7 @@ const cors = require('cors');
 const User = require('./models/User');
 const authRoutes = require('./routes/auth');
 const adminRoutes = require('./routes/admin');
-const clientRoutes = require('./routes/clients');
+const clientRoutes = require('./routes/clients'); // Certifique-se de importar a rota de clientes corretamente
 const fileRoutes = require('./routes/files');
 const reportRoutes = require('./routes/report');
 
@@ -23,8 +23,8 @@ mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
-.then(() => console.log('MongoDB connected'))
-.catch(err => console.log(err));
+  .then(() => console.log('MongoDB connected'))
+  .catch(err => console.log(err));
 
 const createInitialUsers = async () => {
   const admin = await User.findOne({ email: 'admin@admin.com' });
@@ -44,7 +44,7 @@ const createInitialUsers = async () => {
 // Rotas
 app.use('/api/auth', authRoutes);
 app.use('/api/admin', adminRoutes);
-app.use('/api/clients', clientRoutes);
+app.use('/api/clients', clientRoutes); // Certifique-se de usar a rota de clientes corretamente
 app.use('/api/files', fileRoutes);
 app.use('/api/reports', reportRoutes);
 

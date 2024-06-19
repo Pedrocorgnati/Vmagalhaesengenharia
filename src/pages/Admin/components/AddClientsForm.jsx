@@ -1,4 +1,6 @@
-//src/pages/Admin/components/AddClientsForm.jsx'''
+//src/pages/Admin/components/AddClientsForm.jsx
+//'''
+// src/pages/Admin/components/AddClientsForm.jsx
 import React, { useState } from 'react';
 import { authService } from '../../../services/AuthService';
 import { clientsService } from '../../../services/ClientsService';
@@ -10,11 +12,13 @@ export const AddClientsForm = ({ onClientAdded }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log('Form data:', client); // Log dos dados do formulário
     if (Object.values(client).every(field => field)) {
       const { client: email, initialPassword, role, name, city } = client;
       const signUpResult = await authService.signUp(email, initialPassword, role, name, city);
+      console.log('SignUp result:', signUpResult); // Log resultado do cadastro
       if (signUpResult.success) {
-        await clientsService.addClient({ ...client, id: generateUniqueId() });
+        await clientsService.addClient({ email, name, city, role });
         setClient({ client: '', name: '', city: '', initialPassword: '', role: 'client' });
         onClientAdded();
       } else {
@@ -92,7 +96,7 @@ export const AddClientsForm = ({ onClientAdded }) => {
               checked={client.role === 'admin'}
               onChange={handleChange}
             />
-            Administrador
+            Admin
           </label>
         </div>
       </div>
@@ -101,7 +105,4 @@ export const AddClientsForm = ({ onClientAdded }) => {
   );
 };
 
-const generateUniqueId = () => {
-  return Math.random().toString(36).substr(2, 9);
-};
 //'''

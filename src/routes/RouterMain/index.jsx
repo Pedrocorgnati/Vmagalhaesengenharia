@@ -10,6 +10,7 @@ import { AdminDashboard } from '../../pages/Admin/AdminDashboard';
 import LoginPage from '../../pages/LoginPage/LoginPage';
 import NotFoundPage from '../../pages/NotFoundPage/NotFoundPage';
 import ClientDashboard from '../../pages/Admin/components/ClientDashboard/ClientDashboard';
+import { RegisterUser } from '../../pages/Admin/Pages/ClientsAdmPage/RegisterUser';
 
 export const RouterMain = () => {
   const [user, setUser] = useState(null);
@@ -27,6 +28,7 @@ export const RouterMain = () => {
         <Route path="/parceiros" element={<Partners />} />
         <Route path="/missao-e-visao" element={<AboutUs />} />
         <Route path="/contato" element={<ContactUs />} />
+        <Route path="/cadastrar-usuario" element={<RegisterUser />} />
         <Route path="*" element={<NotFoundPage />} />
         <Route path="/admin-dashboard" element={<AdminDashboard userLogout={handleLogout} />} />
       </Routes>

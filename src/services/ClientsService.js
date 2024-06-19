@@ -1,3 +1,6 @@
+
+//src/services/ClientsService.js
+//'''
 import axios from 'axios';
 
 class ClientsService {
@@ -5,8 +8,8 @@ class ClientsService {
     try {
       const response = await axios.get('http://localhost:5000/api/clients', {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
-        },
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
       });
       return response.data;
     } catch (error) {
@@ -19,8 +22,8 @@ class ClientsService {
     try {
       const response = await axios.get(`http://localhost:5000/api/clients/${clientId}`, {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
-        },
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
       });
       return response.data;
     } catch (error) {
@@ -33,12 +36,13 @@ class ClientsService {
     try {
       const response = await axios.post('http://localhost:5000/api/clients', newClient, {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
-        },
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
       });
       return response.data;
     } catch (error) {
       console.error("Error adding client", error);
+      throw error;
     }
   }
 
@@ -46,8 +50,8 @@ class ClientsService {
     try {
       await axios.put(`http://localhost:5000/api/clients/${clientId}`, updatedClient, {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
-        },
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
       });
     } catch (error) {
       console.error("Error updating client", error);
@@ -58,8 +62,8 @@ class ClientsService {
     try {
       await axios.delete(`http://localhost:5000/api/clients/${clientId}`, {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
-        },
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
       });
     } catch (error) {
       console.error("Error deleting client", error);
@@ -68,3 +72,5 @@ class ClientsService {
 }
 
 export const clientsService = new ClientsService();
+
+//'''
