@@ -1,5 +1,6 @@
 //backend/routes/clients.js
 //'''
+// backend/routes/clients.js
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -24,22 +25,40 @@ const verifyAdmin = (req, res, next) => {
 // Adicionar novo cliente
 router.post('/', verifyAdmin, async (req, res) => {
   const { email, password, name, city, role } = req.body;
-  const hashedPassword = await bcrypt.hash(password, 10);
-  const user = new User({
-    email,
-    password: hashedPassword,
-    name,
-    city,
-    role
-  });
+  console.log('Create user request data:', req.body); // Log dados da requisição
+
+  if (!email || !password || !name || !city || !role) {
+    console.log('Missing fields:', { email, password, name, city, role }); // Log dos campos faltantes
+    return res.status(400).json({ message: 'All fields are required' });
+  }
+
   try {
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      console.log('Email already in use:', email);
+      return res.status(400).json({ message: 'Email already in use' });
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const user = new User({
+      email,
+      password: hashedPassword,
+      name,
+      city,
+      role
+    });
+
     await user.save();
-    res.status(201).json({ message: 'Client created', user });
+    console.log('User created successfully:', user); // Log usuário criado com sucesso
+    res.status(201).json({ message: 'User created', user });
   } catch (error) {
-    res.status(400).json({ message: 'Error creating client', error });
+    console.error('Error creating user:', error); // Log erro ao criar usuário
+    res.status(400).json({ message: 'Error creating user', error });
   }
 });
 
 module.exports = router;
+
+
 
 //'''

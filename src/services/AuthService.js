@@ -1,6 +1,7 @@
 //src/services/AuthService.js
 //'''
 // src/services/AuthService.js
+// src/services/AuthService.js
 import axios from 'axios';
 
 class AuthService {
@@ -43,6 +44,7 @@ class AuthService {
         token,
         role
       };
+      localStorage.setItem('token', token); // Armazene o token no localStorage
       setUserState(userData);
       return { success: true, data: userData };
     } catch (error) {
@@ -63,7 +65,6 @@ class AuthService {
 }
 
 export const authService = new AuthService();
-
 
 
 //'''

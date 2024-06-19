@@ -34,17 +34,23 @@ class ClientsService {
 
   async addClient(newClient) {
     try {
+      console.log('Adding client:', newClient); // Log dados do cliente
       const response = await axios.post('http://localhost:5000/api/clients', newClient, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
         }
       });
+      console.log('Add client response:', response.data); // Log resposta do cliente adicionado
       return response.data;
     } catch (error) {
       console.error("Error adding client", error);
+      if (error.response) {
+        console.error("Error response data:", error.response.data); // Log resposta de erro
+      }
       throw error;
     }
   }
+
 
   async updateClient(clientId, updatedClient) {
     try {
