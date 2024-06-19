@@ -1,3 +1,4 @@
+//src/components/Buttons/Buttons.jsx'''
 import "./Buttons.scss";
 import { Link } from "react-router-dom";
 
@@ -43,3 +44,4 @@ const ButtonUpdatePassword = () => {
 }
 
 export { ButtonAdminDash, ButtonLogin, ButtonLogout, ButtonReturn, ButtonSubmit, ButtonUpdatePassword };
+//'''

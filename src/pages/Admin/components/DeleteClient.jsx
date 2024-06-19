@@ -1,3 +1,4 @@
+//src/pages/Admin/components/DeleteClient.jsx'''
 import React from 'react';
 import { clientsService } from '../../../services/ClientsService';
 
@@ -12,3 +13,4 @@ export const DeleteClient = ({ clientId, icon }) => {
     </button>
   );
 };
+//'''

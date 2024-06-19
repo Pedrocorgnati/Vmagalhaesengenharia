@@ -1,3 +1,4 @@
+//src/pages/Admin/Pages/ConfigAdmPage/ConfigAdmPage.jsx'''
 import React, { useState } from 'react';
 import { HeaderAdmin } from "../../../../components/Header/Header";
 import { AsideAdmin } from "../../components/AsideAdmin/AsideAdmin";
@@ -54,3 +55,4 @@ export const ConfigAdmPage = () => {
         </>
     );
 };
+//'''

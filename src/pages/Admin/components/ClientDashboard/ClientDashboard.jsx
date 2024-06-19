@@ -1,3 +1,4 @@
+//src/pages/Admin/components/ClientDashboard/ClientDashboard.jsx'''
 import React, { useState, useEffect } from 'react';
 import { reportsService } from '../../../../services/ReportsService';
 import downloadIcon from '../../../../Assets/Icons/download.svg'; // Ajuste o caminho conforme necessário
@@ -65,3 +66,4 @@ export const ClientDashboard = ({ userLogout }) => {
 };
 
 export default ClientDashboard;
+//'''

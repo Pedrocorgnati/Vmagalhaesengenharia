@@ -1,10 +1,11 @@
+//backend/routes/admin.js 
+//'''
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const router = express.Router();
 const User = require('../models/User');
 
-// Middleware para verificar token e o papel do usuário
 const verifyAdmin = (req, res, next) => {
   const token = req.headers['authorization']?.split(' ')[1];
   if (!token) return res.status(401).send('Access denied');
@@ -40,3 +41,4 @@ router.post('/create-user', verifyAdmin, async (req, res) => {
 });
 
 module.exports = router;
+//'''

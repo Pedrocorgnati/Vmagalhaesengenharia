@@ -1,3 +1,5 @@
+//src/services/ReportsService.js
+//'''
 import axios from 'axios';
 
 class ReportsService {
@@ -27,12 +29,14 @@ class ReportsService {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
       });
+      console.log('Reports list response:', response.data); // Adicione este log
       return response.data;
     } catch (error) {
       console.error("Error fetching reports list", error);
       return [];
     }
   }
+
 
   async deleteReport(reportId) {
     try {
@@ -48,3 +52,5 @@ class ReportsService {
 }
 
 export const reportsService = new ReportsService();
+
+//'''

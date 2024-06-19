@@ -1,3 +1,4 @@
+//src/pages/Admin/components/AddClientsForm.jsx'''
 import React, { useState } from 'react';
 import { authService } from '../../../services/AuthService';
 import { clientsService } from '../../../services/ClientsService';
@@ -103,3 +104,4 @@ export const AddClientsForm = ({ onClientAdded }) => {
 const generateUniqueId = () => {
   return Math.random().toString(36).substr(2, 9);
 };
+//'''

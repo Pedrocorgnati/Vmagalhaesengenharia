@@ -40,7 +40,6 @@ export const AdmLogin = ({ setUser }) => {
             <input type="email" id="email" name="email" placeholder="Email" required onChange={e => setEmail(e.target.value)} />
             <input type="password" id="password" name="password" placeholder="Password" required onChange={e => setPassword(e.target.value)} />
           </div>
-          <button type="submit" className="login-button">Login Admin</button>
           <button type="button" className="back-button" onClick={() => navigate('/')}>Voltar</button>
         </form>
       </section>

@@ -1,3 +1,4 @@
+//src/pages/Admin/components/EditClient.jsx'''
 import React, { useState, useEffect } from 'react';
 import { clientsService } from '../../../services/ClientsService';
 import "../Admin.scss";
@@ -73,3 +74,4 @@ export const EditClient = ({ clientId, onClientUpdated, onClose }) => {
     </form>
   );
 };
+//'''

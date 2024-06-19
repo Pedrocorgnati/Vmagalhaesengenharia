@@ -1,3 +1,4 @@
+//src/pages/LoginPage/LoginPage.jsx'''
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
@@ -14,14 +15,18 @@ const LoginPage = ({ setUser }) => {
 
   const loginWithEmailAndPass = async (e) => {
     e.preventDefault();
+    console.log('Attempting login'); // Log tentativa de login
     const loginResult = await authService.login(email, password, setUserState);
+    console.log('Login result:', loginResult); // Log resultado do login
     if (loginResult.success) {
       const userRole = loginResult.data.role;
+      setUser(loginResult.data);
       if (userRole === 'admin') {
-        alert('Error: Administrators cannot log in here.');
-      } else {
-        setUser(loginResult.data);
+        navigate('/admin-dashboard');
+      } else if (userRole === 'user') {
         navigate('/dashboard');
+      } else {
+        alert('Error logging in!');
       }
     } else {
       alert('Error logging in!');
@@ -37,8 +42,22 @@ const LoginPage = ({ setUser }) => {
         </div>
         <form onSubmit={loginWithEmailAndPass} className="login-form">
           <div className="input-container">
-            <input type="email" id="email" name="email" placeholder="Email" required onChange={e => setEmail(e.target.value)} />
-            <input type="password" id="password" name="password" placeholder="Password" required onChange={e => setPassword(e.target.value)} />
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Email"
+              required
+              onChange={e => setEmail(e.target.value)}
+            />
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Password"
+              required
+              onChange={e => setPassword(e.target.value)}
+            />
           </div>
           <button type="submit" className="login-button">Login</button>
           <button type="button" className="back-button" onClick={() => navigate('/')}>Voltar</button>
@@ -49,3 +68,6 @@ const LoginPage = ({ setUser }) => {
 };
 
 export default LoginPage;
+
+
+//'''

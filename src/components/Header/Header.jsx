@@ -1,4 +1,3 @@
-import { ButtonLogout, ButtonReturn } from '../Buttons/Buttons';
 import './Header.scss';
 import { Link } from 'react-router-dom';
 import Logo from "../../Assets/Logo/Logo-png.png";
@@ -13,7 +12,6 @@ const HeaderLogin = () => {
         </div>
         <nav className="homePage-Nav">
           <Link className='Link-login' to="/login">Login</Link>
-          <Link className='Link-login' to="/adm-login">Login Adm</Link>
         </nav>
       </header>
     </>

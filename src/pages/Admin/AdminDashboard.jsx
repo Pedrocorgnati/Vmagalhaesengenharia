@@ -1,3 +1,4 @@
+//src/pages/Admin/AdminDashboard.jsx'''
 import React from 'react';
 import { AsideAdmin } from './components/AsideAdmin/AsideAdmin.jsx';
 
@@ -13,3 +14,4 @@ export const AdminDashboard = ({ userLogout }) => {
 };
 
 export default AdminDashboard;
+//'''

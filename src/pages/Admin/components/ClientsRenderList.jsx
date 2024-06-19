@@ -1,3 +1,4 @@
+//src/pages/Admin/components/ClientsRenderList.jsx'''
 import React, { useState, useEffect } from 'react';
 import { clientsService } from '../../../services/ClientsService';
 import { EditClientModal } from './EditClientModal';
@@ -65,3 +66,4 @@ export const ClientsRenderList = ({ filters }) => {
 };
 
 export default ClientsRenderList;
+//'''

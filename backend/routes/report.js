@@ -1,18 +1,19 @@
+//backend/routes/report.js'''
 const express = require('express');
 const multer = require('multer');
 const router = express.Router();
 const Report = require('../models/Report');
 const User = require('../models/User');
+const jwt = require('jsonwebtoken');
 
 // Middleware para verificar token e o papel do usuário
-const verifyAdmin = (req, res, next) => {
+const verifyUser = (req, res, next) => {
   const token = req.headers['authorization']?.split(' ')[1];
   if (!token) return res.status(401).send('Access denied');
 
   try {
     const verified = jwt.verify(token, process.env.JWT_SECRET);
     req.user = verified;
-    if (req.user.role !== 'admin') return res.status(403).send('Access forbidden');
     next();
   } catch (error) {
     res.status(400).send('Invalid token');
@@ -31,7 +32,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
-router.post('/upload', verifyAdmin, upload.single('file'), async (req, res) => {
+router.post('/upload', verifyUser, upload.single('file'), async (req, res) => {
   const { clienteEmail, categoria, dataRelatorio, titulo } = req.body;
   if (!req.file) {
     return res.status(400).send('No file uploaded.');
@@ -53,7 +54,17 @@ router.post('/upload', verifyAdmin, upload.single('file'), async (req, res) => {
   }
 });
 
-router.delete('/delete/:id', verifyAdmin, async (req, res) => {
+router.get('/', verifyUser, async (req, res) => {
+  console.log('GET /api/reports called'); // Adicione este log
+  try {
+    const reports = await Report.find();
+    res.json(reports);
+  } catch (error) {
+    res.status(400).send(error);
+  }
+});
+
+router.delete('/delete/:id', verifyUser, async (req, res) => {
   try {
     const report = await Report.findById(req.params.id);
     if (!report) return res.status(404).send('Report not found');
@@ -70,3 +81,6 @@ router.delete('/delete/:id', verifyAdmin, async (req, res) => {
 });
 
 module.exports = router;
+
+
+//'''
