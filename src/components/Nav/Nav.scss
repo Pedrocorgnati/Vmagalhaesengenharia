@@ -1,5 +1,4 @@
 @import "../../utils/Mixins/Mixins.scss";
-@import "../../App.scss";
 
 .nav-Home {
 
@@ -14,18 +13,4 @@
         display: flex;
         @include around-row;
     }
-}
-
-.nav-Home-Link {
-    color: $white;
-    text-decoration: none;
-    font-weight: 600;
-    padding: 2px 4px;
-    font-size: 16px;
-}
-
-.nav-Home-Link:hover {
-    padding: 0px 0px;
-    font-size: 18px;
-    transition: 0.3s;
 }
